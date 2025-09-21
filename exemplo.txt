@@ -1,0 +1,2 @@
+Olá, Python!
+Abrir, ler e escrever no arquivo

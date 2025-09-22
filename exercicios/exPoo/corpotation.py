@@ -9,7 +9,7 @@ class Cadastro():
 
     def apresentacao(self):
         print(
-            f"- Meu nome é {self.nome} tenho {self.idade} anos de idade. \n Atuo na área de {self.cargo}, sou {self.nivel}.")
+            f"- Meu nome é {self.nome}, tenho {self.idade} anos de idade. \n Atuo na área de {self.cargo}, sou {self.nivel}.")
 
 class Desenvolvedores(Cadastro):
     def __init__(self, nome, idade, cargo, nivel, linguagem):
@@ -18,7 +18,7 @@ class Desenvolvedores(Cadastro):
 
     def apresentacao(self):
         super().apresentacao()
-        print(f"Utilizo {self.linguagem} como linguagem de programação.")
+        print(f" Utilizo {self.linguagem} como linguagem de programação.")
         print("--------------------------------------------------------")
 
 class Rh (Cadastro):
@@ -28,7 +28,7 @@ class Rh (Cadastro):
 
     def apresentacao(self):
         super().apresentacao()
-        print(f"Minha função dentro do Rh é {self.funcionalidade}.")
+        print(f" Minha função dentro do Rh é {self.funcionalidade}.")
         print("--------------------------------------------------")
 
 class Equipe_vendas (Cadastro):
@@ -39,14 +39,39 @@ class Equipe_vendas (Cadastro):
     def apresentacao(self):
         super().apresentacao()
         print(
-            f"Minha função dentro da equipe de vendas é {self.funcionalidade}.")
+            f" Minha função dentro da equipe de vendas é {self.funcionalidade}.")
         print("----------------------------------------------------------------")
 
+while True:
+    print("Escolha o seu tipo de cadastro:")
+    print("1 - Desenvolvedor")
+    print("2 - RH")
+    print("3 - Equipe de Vendas")
+    opcao = input("Digite o número da opção: ")
 
-cadastro1 = Desenvolvedores(nome="Guilherme", idade=20,cargo="Desenvolvedor", nivel="Estágiario", linguagem="Python")
-cadastro2 = Rh(nome="Junior", idade=25, cargo="Rh", nivel="Pleno", funcionalidade="Gestão de Pessoas")
-cadastro3 = Equipe_vendas(nome="Leonardo", idade=30, cargo="Equipe de Vendas",nivel="Senior", funcionalidade="Negociação e Fechamento de Vendas")
+    nome = input("Digite seu nome: ")
+    idade = int(input("Digite a sua idade: "))
+    cargo = input("Qual o seu cargo: ")
+    nivel = input("Digite o nível: ")
 
-cadastro1.apresentacao()
-cadastro2.apresentacao()
-cadastro3.apresentacao()
+    if opcao == "1":
+        linguagem = input("Digite a linguagem de programação: ")
+        cadastro = Desenvolvedores(nome, idade, cargo, nivel, linguagem)
+    elif opcao == "2":
+        funcionalidade = input("Digite a funcionalidade no RH: ")
+        cadastro = Rh(nome, idade, cargo, nivel, funcionalidade)
+    elif opcao == "3":
+        funcionalidade = input("Digite a funcionalidade na equipe de vendas: ")
+        cadastro = Equipe_vendas(nome, idade, cargo, nivel, funcionalidade)
+    else:
+        print("Opção inválida!")
+        cadastro = None
+
+    if cadastro:
+        cadastro.apresentacao()
+
+    continuar = input("Deseja cadastrar outro funcionário? (sim/não): ").lower()
+
+    if continuar != "sim":
+        break
+
